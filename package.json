@@ -1,0 +1,28 @@
+{
+  "name": "irrigation",
+  "version": "1.0.0",
+  "description": "Script to use eWeLink switchs",
+  "main": "irrigation.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielpassy/irrigation-system.git"
+  },
+  "keywords": [
+    "irrigation",
+    "eWeLink",
+    "smartagriculture"
+  ],
+  "author": "Daniel de Mattos Passy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danielpassy/irrigation-system/issues"
+  },
+  "homepage": "https://github.com/danielpassy/irrigation-system#readme",
+  "dependencies": {
+    "ewelink-api": "^3.1.0",
+    "node-fetch": "^2.6.1"
+  }
+}
