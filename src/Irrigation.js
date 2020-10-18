@@ -11,7 +11,8 @@ let WeatherApi = require('./previsao')
 async function setup(){
 
     // load credentials from file that's not uploadded in github
-    const file_path = path.join(process.cwd(), 'irrigation-system', 'credentials.json');
+    const file_path = path.join(process.cwd(), 'irrigation-system', 'src', 'credentials.json');
+
 
     fs.readFile(file_path, (err, data) => {
         if (err) throw err;
