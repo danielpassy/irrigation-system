@@ -1,15 +1,16 @@
-let WeatherApi = require('./previsao')
 const ewelink = require('ewelink-api');
 let connection;
 let devices;
 const fs = require('fs');
 var path = require('path');
 
+//eventually build ontop of this API to manipulate when to activate
+let WeatherApi = require('./previsao')
 
 
 async function setup(){
 
-    // I'm not going to upload my password to github, no way
+    // load credentials from file that's not uploadded in github
     const file_path = path.join(process.cwd(), 'irrigation-system', 'credentials.json');
 
     fs.readFile(file_path, (err, data) => {
@@ -44,7 +45,7 @@ async function activate(){
     let status = await connection.setDevicePowerState(devices[1].deviceid, 'on');
     console.log(status)
 
-    // this is the sleep equivalent to javascript
+    // this is the 'sleep' equivalent in javascript
     await new Promise(r => setTimeout(r, 5000)); 
     status = await connection.setDevicePowerState(devices[1].deviceid, 'off');
     console.log(status)
