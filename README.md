@@ -28,7 +28,7 @@ cd irrigation-system
 npm install
 ```
 
-set up your credentials on credentials.json and you're good to go
+rename credentials_example.json to credentials.json, edit with your credentials and you're good to go
 
 ## Usage
 
