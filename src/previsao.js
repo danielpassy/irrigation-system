@@ -1,34 +1,34 @@
-const { Console } = require('console');
-const fetch = require('node-fetch');
 
-// documentation for this API: apiadvisor.climatempo.com.br/doc/
+  const { default: fetch } = require("node-fetch");
 
+  // google maps, what's is here, get the coord
+  const lat = -22.886073
+  const lon = -43.029161
 
-async function weatherApi(){
-    // forecast, 72 hours, city Niteroi
-    // Need to get permission to access Niteroi data, but... the documentation is bad
+  const unit = 'si'
+  const now = 'now'
+  const fields = 'precipitation'
+  const apikey = 'tNOoj0OypTE8tY65pbLZF02jxQ8Qf8c8'
 
-    const endpoint = `http://apiadvisor.climatempo.com.br/api/v1/forecast/locale/3477/hours/72?city?name=Niterói&token=${token}`
-    const APIResponse = await fetch(url)
-    const APIResponseJson = await APIResponse.json()
-    console.log(APIResponseJson)
+  let currentTime = new Date()
+  let currentMinus6h = new Date()
+  let tomorrow = new Date()
 
-}
+  tomorrow.setHours(tomorrow.getHours() + 24 );
+  currentMinus6h.setHours(currentMinus6h.getHours() - 6);
 
-async function configureLocals(){
-    // TODO: get permission to access Niterói
-    // trasncripting from PHP to JS or call a command prompt to execute the PHP script
-    // https://github.com/adinan-cenci/climatempo-api/tree/52ec2e83ad555ada4254cf1f5a05edb4eb8043d6
+  currentTime = currentTime.toISOString()
+  tomorrow = tomorrow.toISOString()
+  currentMinus6h = currentMinus6h.toISOString()
 
-    let url = `http://apiadvisor.climatempo.com.br/api-manager/user-token/${token}/locales`
-    let locals = []
-    var myInit = {method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: {
+  const urlHistorical = `https://api.climacell.co/v3/weather/historical/station?lat=${lat}&lon=${lon}&unit_system=${unit}&start_time=${currentMinus6h}&end_time=${now}&fields=${fields}&apikey=${apikey}`
+  const urlPrediction = `https://api.climacell.co/v3/weather/forecast/daily?lat=${lat}&lon=${lon}&unit_system=${unit}&start_time=${now}&end_time=${tomorrow}&fields=${fields}&apikey=${apikey}`
 
-                    }};
-    const Response = await fetch(url, meth)
+  let dataHistorical = fetch(urlHistorical)
+  let dataPrediction = fetch(urlPrediction)
 
-}
+  Promise.all([dataHistorical, dataPrediction]).
+    then(values => Promise.all(values.map(r => r.json()))).
+    then(([dataHistorical, dataPrediction]) => {
+      console.log(dataHistorical, dataPrediction)
+    })

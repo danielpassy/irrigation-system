@@ -23,6 +23,7 @@
   "homepage": "https://github.com/danielpassy/irrigation-system#readme",
   "dependencies": {
     "ewelink-api": "^3.1.0",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "xmlhttprequest": "^1.8.0"
   }
 }
