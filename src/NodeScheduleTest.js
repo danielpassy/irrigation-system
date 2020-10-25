@@ -43,6 +43,7 @@ class FlexibleScheduler {
             // save the results in a variable in an array of the same size as the task array
             // let argumentsOutput = task['tasks'].map(function(x){return 1})
             // finally call the 
+            // addJob(args, function(){CancelWrapper(devicehandler.turnOff, args2)}
         })
         thijobList.push(turnOn)
     }
