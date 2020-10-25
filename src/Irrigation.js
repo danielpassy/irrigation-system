@@ -111,7 +111,8 @@ async function getRequiredWateringTime(devices, credentials){
 }
 
 async function turnOff(devices){
-    
+    // devices come wrap in an array of a single element
+    devices = devices[0]
     status = await connection.setDevicePowerState(devices[1].deviceid, 'off');
     // for (device in devices){
     //     // connection.setDevicePowerState(device.deviceid, 'on');
